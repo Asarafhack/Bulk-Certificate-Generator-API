@@ -1,0 +1,16 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: sqlite:////app/data/bulk_certificates.db
+      STORAGE_DIR: /app/storage/certificates
+      MAX_BATCH_SIZE: 500
+    volumes:
+      - certificate_data:/app/data
+      - certificate_files:/app/storage/certificates
+
+volumes:
+  certificate_data:
+  certificate_files:
